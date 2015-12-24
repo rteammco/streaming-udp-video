@@ -1,6 +1,6 @@
 .DS_Store
 *.swp
 *~
-client
-server
+./client
+./server
 test/
