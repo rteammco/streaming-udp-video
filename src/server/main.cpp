@@ -1,26 +1,12 @@
-#include <iostream>
-#include <vector>
+#include "frame_processor.h"
 
-#include <opencv2/core/core.hpp>
-#include <opencv2/highgui/highgui.hpp>
 
-using namespace std;
-
+using udp_video::FrameProcessor;
 
 int main(int argc, char **argv) {
-  cout << "Hello" << endl;
-  vector<int> x = {1, 3, 4};
-  for (const int i : x) {
-    cout << i << endl;
+  FrameProcessor frame_processor(true);
+  while (true) {
+    frame_processor.GetFrameFromCamera();
   }
-
-  cv::Mat image = cv::imread("test/cat.jpg", CV_LOAD_IMAGE_COLOR);
-  if (!image.data) {
-    cout << "Failed to load image." << endl;
-    return -1;
-  }
-  cv::namedWindow("Test", cv::WINDOW_AUTOSIZE);
-  cv::imshow("Test", image);
-  cv::waitKey(0);
   return 0;
 }

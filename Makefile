@@ -5,13 +5,10 @@ CLIENT_EXE = client
 
 COMPILER = /usr/bin/g++
 
-CLIENT_SRC_FILES = main.cpp
-SERVER_SRC_FILES = main.cpp
-
-CLIENT_SRC_DIR = src/client
-SERVER_SRC_DIR = src/server
-CLIENT_SRC = $(addprefix $(CLIENT_SRC_DIR)/, $(CLIENT_SRC_FILES))
-SERVER_SRC = $(addprefix $(SERVER_SRC_DIR)/, $(SERVER_SRC_FILES))
+SHARED_SRC = $(wildcard src/*.cpp)
+CLIENT_SRC = $(wildcard src/client/*.cpp)
+SERVER_SRC = $(wildcard src/server/*.cpp)
+SRC_INCLUDE = -I src
 
 OBJ_DIR = obj
 
@@ -22,10 +19,10 @@ OPENCV = $(shell pkg-config --cflags --libs opencv)
 all: client server
 
 client:
-	@$(COMPILER) $(FLAGS) $(OPENCV) $(CLIENT_SRC) -o $(CLIENT_EXE)
+	@$(COMPILER) $(FLAGS) $(OPENCV) $(SRC_INCLUDE) $(SHARED_SRC) $(CLIENT_SRC) -o $(CLIENT_EXE)
 
 server:
-	@$(COMPILER) $(FLAGS) $(OPENCV) $(SERVER_SRC) -o $(SERVER_EXE)
+	@$(COMPILER) $(FLAGS) $(OPENCV) $(SRC_INCLUDE) $(SHARED_SRC) $(SERVER_SRC) -o $(SERVER_EXE)
 
 clean:
 	rm -f $(CLIENT_EXE) $(SERVER_EXE)
