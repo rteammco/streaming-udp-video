@@ -12,6 +12,9 @@ namespace udp_video_receiver {
 
 class VideoDecoder {
   public:
+    // Default constructor.
+    VideoDecoder() {}
+
     // Displays a single frame from the given JPEG image data as a single
     // 1-dimensional vector. This vector should be in the format as given by
     // OpenCV imencode function.
