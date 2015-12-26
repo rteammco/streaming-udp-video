@@ -3,6 +3,8 @@
 // to a receiver of the specified port number and address. The frames should be
 // decodable on the other side and reconstructed into images.
 
+#include <vector>
+
 #include "process_port_param.h"
 #include "sender/sender_socket.h"
 #include "sender/video_reader.h"
@@ -16,7 +18,7 @@ int main(int argc, char **argv) {
   if (port < 0) {
     return -1;
   }
-  VideoReader video_reader(true, 75, 1.0);
+  VideoReader video_reader(false, 25, 1.0);
   const SenderSocket socket("127.0.0.1", port);  // TODO: address parameter!
   while (true) {  // TODO: break out cleanly when done.
     const std::vector<unsigned char> data = video_reader.GetFrameFromCamera();

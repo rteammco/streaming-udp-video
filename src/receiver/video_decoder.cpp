@@ -16,6 +16,8 @@ void VideoDecoder::ShowFrame(const std::vector<unsigned char> &data) const {
     return;
   }
   cv::imshow(window_name_, frame);
+  // Need to make it wait a few miliseconds or it won't render the frame.
+  cv::waitKey(15);
 }
 
 };  // namespace udp_video_receiver
