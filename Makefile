@@ -1,13 +1,13 @@
-# Makefile for the client and server of the streaming UDP video program.
+# Makefile for the sender and receiver of the streaming UDP video program.
 
-SERVER_EXE = server
-CLIENT_EXE = client
+SEND_EXE = sender
+RECV_EXE = receiver
 
 COMPILER = /usr/bin/g++
 
 SHARED_SRC = $(wildcard src/*.cpp)
-CLIENT_SRC = $(wildcard src/client/*.cpp)
-SERVER_SRC = $(wildcard src/server/*.cpp)
+RECV_SRC = $(wildcard src/receiver/*.cpp)
+SEND_SRC = $(wildcard src/sender/*.cpp)
 SRC_INCLUDE = -I src
 
 OBJ_DIR = obj
@@ -16,13 +16,13 @@ OBJ_DIR = obj
 FLAGS = -std=c++11
 OPENCV = $(shell pkg-config --cflags --libs opencv)
 
-all: client server
+all: receiver sender
 
-client:
-	@$(COMPILER) $(FLAGS) $(OPENCV) $(SRC_INCLUDE) $(SHARED_SRC) $(CLIENT_SRC) -o $(CLIENT_EXE)
+receiver:
+	@$(COMPILER) $(FLAGS) $(OPENCV) $(SRC_INCLUDE) $(SHARED_SRC) $(RECV_SRC) -o $(RECV_EXE)
 
-server:
-	@$(COMPILER) $(FLAGS) $(OPENCV) $(SRC_INCLUDE) $(SHARED_SRC) $(SERVER_SRC) -o $(SERVER_EXE)
+sender:
+	@$(COMPILER) $(FLAGS) $(OPENCV) $(SRC_INCLUDE) $(SHARED_SRC) $(SEND_SRC) -o $(SEND_EXE)
 
 clean:
-	rm -f $(CLIENT_EXE) $(SERVER_EXE)
+	rm -f $(RECV_EXE) $(SEND_EXE)
