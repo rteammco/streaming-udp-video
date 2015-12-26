@@ -10,9 +10,11 @@ int main(int argc, char **argv) {
   ReceiverSocket socket(8080);
   if (socket.BindSocketToListen()) {
     while (true) {
-      std::cout << "Waiting on next packet..." << std::endl;
       std::vector<unsigned char> data = socket.GetPacket();
-      std::cout << (int)data[0] << std::endl;
+      for (const char c : data) {
+        std::cout << c;
+      }
+      std::cout << std::endl;
     }
   }
   return 0;
