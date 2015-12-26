@@ -31,8 +31,8 @@ VideoReader::VideoReader(
   }
 }
 
-const std::vector<uchar> VideoReader::GetFrameFromCamera() {
-  std::vector<uchar> data_buffer;
+const std::vector<unsigned char> VideoReader::GetFrameFromCamera() {
+  std::vector<unsigned char> data_buffer;
   if (!capture_.isOpened()) {
     std::cerr << "Could not get frame. Camera not available." << std::endl;
     return data_buffer;

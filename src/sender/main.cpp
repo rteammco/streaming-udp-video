@@ -17,9 +17,10 @@ int main(int argc, char **argv) {
     return -1;
   }
   VideoReader video_reader(true, 75, 1.0);
-  SenderSocket socket("127.0.0.1", port);  // TODO: address parameter!
-  while (true) {
-    video_reader.GetFrameFromCamera();
+  const SenderSocket socket("127.0.0.1", port);  // TODO: address parameter!
+  while (true) {  // TODO: break out cleanly when done.
+    const std::vector<unsigned char> data = video_reader.GetFrameFromCamera();
+    socket.SendPacket(data);
   }
   return 0;
 }

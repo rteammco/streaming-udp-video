@@ -30,7 +30,7 @@ class VideoReader {
     // camera is available, the vector will be empty.
     //
     // If the show_video option was set to true, the frame will be displayed.
-    const std::vector<uchar> GetFrameFromCamera();
+    const std::vector<unsigned char> GetFrameFromCamera();
 
   private:
     // The name of the video window (if it is displayed).
