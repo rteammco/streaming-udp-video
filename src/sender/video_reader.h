@@ -1,6 +1,9 @@
+// The VideoReader class uses OpenCV to capture video frames from a webcam or
+// connected video camera and returns the raw frame data (after compressing the
+// frame image in JPEG format). This data can be sent over the network.
+
 #ifndef SENDER_VIDEO_READER_H
 #define SENDER_VIDEO_READER_H
-
 
 #include <string>
 #include <vector>
@@ -11,7 +14,6 @@
 
 namespace udp_video_sender {
 
-// ;
 class VideoReader {
   public:
     // Initializes the OpenCV VideoCapture object by selecting the default
