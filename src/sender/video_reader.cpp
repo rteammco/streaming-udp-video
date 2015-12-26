@@ -31,7 +31,7 @@ VideoReader::VideoReader(
   }
 }
 
-std::vector<uchar> VideoReader::GetFrameFromCamera() {
+const std::vector<uchar> VideoReader::GetFrameFromCamera() {
   std::vector<uchar> data_buffer;
   if (!capture_.isOpened()) {
     std::cerr << "Could not get frame. Camera not available." << std::endl;
@@ -54,4 +54,4 @@ std::vector<uchar> VideoReader::GetFrameFromCamera() {
   return data_buffer;
 }
 
-}; // namespace udp_video_sender
+};  // namespace udp_video_sender

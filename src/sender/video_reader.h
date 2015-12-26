@@ -1,5 +1,5 @@
-#ifndef SERVER_VIDEO_READER_H
-#define SERVER_VIDEO_READER_H
+#ifndef SENDER_VIDEO_READER_H
+#define SENDER_VIDEO_READER_H
 
 
 #include <string>
@@ -28,7 +28,7 @@ class VideoReader {
     // camera is available, the vector will be empty.
     //
     // If the show_video option was set to true, the frame will be displayed.
-    std::vector<uchar> GetFrameFromCamera();
+    const std::vector<uchar> GetFrameFromCamera();
 
   private:
     // The OpenCV camera capture object. This is used to interface with a
@@ -50,7 +50,7 @@ class VideoReader {
     const bool show_video_;
 };
 
-}; // namespace udp_video_sender
+};  // namespace udp_video_sender
 
 
-#endif // SERVER_VIDEO_READER_H
+#endif  // SENDER_VIDEO_READER_H
