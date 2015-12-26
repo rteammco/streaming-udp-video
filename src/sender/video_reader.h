@@ -33,6 +33,9 @@ class VideoReader {
     const std::vector<uchar> GetFrameFromCamera();
 
   private:
+    // The name of the video window (if it is displayed).
+    const std::string window_name_ = "Video Capture Window";
+
     // The OpenCV camera capture object. This is used to interface with a
     // connected camera and extract frames from it.
     cv::VideoCapture capture_;
@@ -45,12 +48,9 @@ class VideoReader {
     // downsampled by the given amount to reduce cost of sending the data.
     float scale_;
 
-    // The name of the video window (if it is displayed).
-    const std::string window_name_ = "Video Capture Window";
-
     // Set to true to show the video.
     const bool show_video_;
-};
+};  // VideoReader
 
 };  // namespace udp_video_sender
 
