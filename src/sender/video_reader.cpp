@@ -44,7 +44,11 @@ const std::vector<unsigned char> VideoReader::GetFrameFromCamera() {
   }
   // If the image is being downsampled, resize it first.
   if (scale_ < 1.0) {
-    // TODO
+    const cv::Size original_size = frame.size();
+    const int new_width = (int)(original_size.width * scale_);
+    const int new_height = (int)(original_size.height * scale_);
+    const cv::Size new_size(new_width, new_height);
+    cv::resize(frame, frame, new_size);
   }
   // Encode the image to jpeg before returning the data.
   const std::vector<int> compression_params = {
