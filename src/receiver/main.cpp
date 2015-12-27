@@ -22,7 +22,7 @@ int main(int argc, char **argv) {
   if (socket.BindSocketToListen()) {
     std::cout << "Listening on port " << port << "." << std::endl;
     const VideoDecoder decoder;
-    while (true) {  // TODO: have a way of breaking out cleanly
+    while (true) {  // TODO: break out cleanly when done.
       std::vector<unsigned char> data = socket.GetPacket();
       decoder.ShowFrame(data);
     }

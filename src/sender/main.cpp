@@ -30,7 +30,7 @@ int main(int argc, char **argv) {
       << std::endl;
   while (true) {  // TODO: break out cleanly when done.
     const std::vector<unsigned char> data = video_reader.GetFrameFromCamera();
-    std::cout << data.size() << std::endl;
+    std::cout << "Sent frame of size " << data.size() << "." << std::endl;
     socket.SendPacket(data);
   }
   return 0;
