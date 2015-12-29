@@ -19,10 +19,10 @@ OPENCV = $(shell pkg-config --cflags --libs opencv)
 all: receiver sender
 
 receiver:
-	@$(COMPILER) $(FLAGS) $(OPENCV) $(SRC_INCLUDE) $(SHARED_SRC) $(RECV_SRC) -o $(RECV_EXE)
+	@$(COMPILER) $(FLAGS) $(SRC_INCLUDE) $(SHARED_SRC) $(RECV_SRC) -o $(RECV_EXE) $(OPENCV)
 
 sender:
-	@$(COMPILER) $(FLAGS) $(OPENCV) $(SRC_INCLUDE) $(SHARED_SRC) $(SEND_SRC) -o $(SEND_EXE)
+	@$(COMPILER) $(FLAGS) $(SRC_INCLUDE) $(SHARED_SRC) $(SEND_SRC) -o $(SEND_EXE) $(OPENCV)
 
 clean:
 	rm -f $(RECV_EXE) $(SEND_EXE)
