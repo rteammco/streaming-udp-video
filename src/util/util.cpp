@@ -6,7 +6,7 @@
 namespace udp_streaming_video {
 namespace util {
 
-int ProcessPortParam(int argc, char **argv) {
+int ProcessPortParam(int argc, char** argv) {
   if (argc < 2) {
     std::cerr << "Please specify a port number." << std::endl;
     return -1;

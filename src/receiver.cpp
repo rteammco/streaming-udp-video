@@ -5,26 +5,33 @@
 #include <iostream>
 #include <vector>
 
+#include "protocols/basic_protocol.h"
 #include "receiver/receiver_socket.h"
 #include "receiver/video_decoder.h"
 #include "util/util.h"
 
 using udp_streaming_video::ReceiverSocket;
 using udp_streaming_video::VideoDecoder;
+using udp_streaming_video::BasicProtocol;
+using udp_streaming_video::BasicProtocolData;
 
-int main(int argc, char **argv) {
+int main(int argc, char** argv) {
   const int port = udp_streaming_video::util::ProcessPortParam(argc, argv);
   if (port < 0) {
     return -1;
   }
   const ReceiverSocket socket(port);
-  if (socket.BindSocketToListen()) {
-    std::cout << "Listening on port " << port << "." << std::endl;
-    const VideoDecoder decoder;
-    while (true) {  // TODO: break out cleanly when done.
-      std::vector<unsigned char> data = socket.GetPacket();
-      decoder.ShowFrame(data);
-    }
+  if (!socket.BindSocketToListen()) {
+    std::cerr << "Could not bind socket." << std::endl;
+    return -1;
+  }
+  std::cout << "Listening on port " << port << "." << std::endl;
+  const BasicProtocol protocol;
+  BasicProtocolData protocol_data;
+  const VideoDecoder decoder;
+  while (true) {  // TODO: break out cleanly when done.
+    protocol.UnpackData(socket.GetPacket(), &protocol_data);
+    decoder.ShowFrame(protocol_data.data);
   }
   return 0;
 }

@@ -35,14 +35,16 @@ file(GLOB SRC "${CMAKE_CURRENT_SOURCE_DIR}/src/*")
 
 # Create a library for all of the added Super Resolution dependencies (i.e. all
 # the classes).
-file(GLOB   receiver_SRC   "src/receiver/*.cpp")
-file(GLOB   sender_SRC     "src/sender/*.cpp")
-file(GLOB   util_SRC       "src/util/*.cpp")
+file(GLOB   protocols_SRC   "src/protocols/*.cpp")
+file(GLOB   receiver_SRC    "src/receiver/*.cpp")
+file(GLOB   sender_SRC      "src/sender/*.cpp")
+file(GLOB   util_SRC        "src/util/*.cpp")
 
 # Add the Receiver binary.
 add_executable(
   Receiver
   src/receiver.cpp
+  ${protocols_SRC}
   ${receiver_SRC}
   ${util_SRC}
 )
@@ -55,6 +57,7 @@ target_link_libraries(
 add_executable(
   Sender
   src/sender.cpp
+  ${protocols_SRC}
   ${sender_SRC}
   ${util_SRC}
 )

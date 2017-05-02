@@ -14,7 +14,7 @@
 using udp_streaming_video::SenderSocket;
 using udp_streaming_video::VideoReader;
 
-int main(int argc, char **argv) {
+int main(int argc, char** argv) {
   const int port = udp_streaming_video::util::ProcessPortParam(argc, argv);
   if (port < 0) {
     return -1;
