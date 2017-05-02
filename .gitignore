@@ -1,5 +1,8 @@
-.DS_Store
-*.swp
-*~
-/sender
-/receiver
+bin/
+lib/
+CMakeCache.txt
+CMakeFiles/
+Testing/
+Makefile
+CTestTestfile.cmake
+cmake_install.cmake
