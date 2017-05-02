@@ -1,9 +1,8 @@
-#ifndef PROCESS_PORT_H
-#define PROCESS_PORT_H
+#ifndef SRC_UTIL_PROCESS_PORT_PARAM_H_
+#define SRC_UTIL_PROCESS_PORT_PARAM_H_
 
 #include <iostream>
 #include <sstream>
-
 
 namespace udp_video {
 
@@ -30,5 +29,4 @@ int ProcessPortParam(int argc, char **argv) {
 
 };  // namespace udp_video
 
-
-#endif  // PROCESS_PORT_H
+#endif  // SRC_UTIL_PROCESS_PORT_PARAM_H_

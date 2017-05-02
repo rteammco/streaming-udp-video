@@ -3,16 +3,15 @@
 #include <iostream>
 #include <vector>
 
-#include <opencv2/core/core.hpp>
-#include <opencv2/highgui/highgui.hpp>
-
+#include "opencv2/core/core.hpp"
+#include "opencv2/highgui/highgui.hpp"
 
 namespace udp_video_sender {
 
 VideoReader::VideoReader(
     const bool show_video, const int jpeg_quality, const float scale)
-    : show_video_(show_video),
-    capture_(cv::VideoCapture(0)) {
+    : show_video_(show_video), capture_(cv::VideoCapture(0)) {
+
   // Set the jpeg quality, restricted to values between 5 and 100.
   if (jpeg_quality > 100) {
     jpeg_quality_ = 100;
@@ -45,8 +44,8 @@ const std::vector<unsigned char> VideoReader::GetFrameFromCamera() {
   // If the image is being downsampled, resize it first.
   if (scale_ < 1.0) {
     const cv::Size original_size = frame.size();
-    const int new_width = (int)(original_size.width * scale_);
-    const int new_height = (int)(original_size.height * scale_);
+    const int new_width = static_cast<int>(original_size.width * scale_);
+    const int new_height = static_cast<int>(original_size.height * scale_);
     const cv::Size new_size(new_width, new_height);
     cv::resize(frame, frame, new_size);
   }

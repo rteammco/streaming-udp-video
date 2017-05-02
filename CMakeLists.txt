@@ -37,14 +37,14 @@ file(GLOB SRC "${CMAKE_CURRENT_SOURCE_DIR}/src/*")
 # the classes).
 file(GLOB   receiver_SRC   "src/receiver/*.cpp")
 file(GLOB   sender_SRC     "src/sender/*.cpp")
-file(GLOB   udp_SRC        "src/udp/*.cpp")
+file(GLOB   util_SRC       "src/util/*.cpp")
 
 # Add the Receiver binary.
 add_executable(
   Receiver
   src/receiver.cpp
   ${receiver_SRC}
-  ${udp_SRC}
+  ${util_SRC}
 )
 target_link_libraries(
   Receiver
@@ -56,7 +56,7 @@ add_executable(
   Sender
   src/sender.cpp
   ${sender_SRC}
-  ${udp_SRC}
+  ${util_SRC}
 )
 target_link_libraries(
   Sender

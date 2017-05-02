@@ -1,25 +1,24 @@
 // The SenderSocket class
 
-#ifndef SENDER_SENDER_SOCKET_H
-#define SENDER_SENDER_SOCKET_H
+#ifndef SRC_SENDER_SENDER_SOCKET_H_
+#define SRC_SENDER_SENDER_SOCKET_H_
 
 #include <arpa/inet.h>
 #include <string>
 #include <vector>
 
-
 namespace udp_video_sender {
 
 class SenderSocket {
-public:
+ public:
   SenderSocket(const std::string &receiver_ip, const int receiver_port);
-  
+
   // TODO: add destructor to clear the socket
   // close(fd);
 
   void SendPacket(const std::vector<unsigned char> &data) const;
 
-private:
+ private:
     // The socket identifier (handle).
     int socket_handle_;
 
@@ -30,5 +29,4 @@ private:
 
 };  // namespace udp_video_sender
 
-
-#endif // SENDER_SENDER_SOCKET_H
+#endif  // SRC_SENDER_SENDER_SOCKET_H_
