@@ -10,7 +10,7 @@
 
 #include <vector>
 
-namespace udp_video_receiver {
+namespace udp_streaming_video {
 
 // This is the maximum UDP packet size, and the buffer will be allocated for
 // the max amount.
@@ -43,6 +43,6 @@ class ReceiverSocket {
   int socket_handle_;
 };  // ReceiverSocket
 
-};  // namespace udp_video_receiver
+}  // namespace udp_streaming_video
 
 #endif  // SRC_RECEIVER_RECEIVER_SOCKET_H_

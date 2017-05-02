@@ -6,7 +6,7 @@
 #include "opencv2/core/core.hpp"
 #include "opencv2/highgui/highgui.hpp"
 
-namespace udp_video_sender {
+namespace udp_streaming_video {
 
 VideoReader::VideoReader(
     const bool show_video, const int jpeg_quality, const float scale)
@@ -57,4 +57,4 @@ const std::vector<unsigned char> VideoReader::GetFrameFromCamera() {
   return data_buffer;
 }
 
-};  // namespace udp_video_sender
+}  // namespace udp_streaming_video

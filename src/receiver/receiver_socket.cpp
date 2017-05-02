@@ -7,7 +7,7 @@
 #include <iostream>
 #include <vector>
 
-namespace udp_video_receiver {
+namespace udp_streaming_video {
 
 ReceiverSocket::ReceiverSocket(const int port_number) : port_(port_number) {
   socket_handle_ = socket(AF_INET, SOCK_DGRAM, 0);
@@ -56,4 +56,4 @@ const std::vector<unsigned char> ReceiverSocket::GetPacket() const {
   return data;
 }
 
-};  // namespace udp_video_receiver
+}  // namespace udp_streaming_video

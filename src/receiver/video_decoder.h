@@ -7,7 +7,7 @@
 #include <string>
 #include <vector>
 
-namespace udp_video_receiver {
+namespace udp_streaming_video {
 
 class VideoDecoder {
  public:
@@ -26,6 +26,6 @@ class VideoDecoder {
   const std::string window_name_ = "Streaming Video";
 };  // VideoDecoder
 
-};  // namespace udp_video_receiver
+}  // namespace udp_streaming_video
 
 #endif  // SRC_RECEIVER_VIDEO_DECODER_H_

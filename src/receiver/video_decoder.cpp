@@ -6,7 +6,7 @@
 #include "opencv2/core/core.hpp"
 #include "opencv2/highgui/highgui.hpp"
 
-namespace udp_video_receiver {
+namespace udp_streaming_video {
 
 void VideoDecoder::ShowFrame(const std::vector<unsigned char> &data) const {
   cv::Mat frame = cv::imdecode(data, cv::IMREAD_COLOR);
@@ -19,4 +19,4 @@ void VideoDecoder::ShowFrame(const std::vector<unsigned char> &data) const {
   cv::waitKey(15);
 }
 
-};  // namespace udp_video_receiver
+}  // namespace udp_streaming_video

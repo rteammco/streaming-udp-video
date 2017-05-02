@@ -7,7 +7,7 @@
 #include <string>
 #include <vector>
 
-namespace udp_video_sender {
+namespace udp_streaming_video {
 
 SenderSocket::SenderSocket(
     const std::string &receiver_ip, const int receiver_port) {
@@ -30,4 +30,4 @@ void SenderSocket::SendPacket(
       sizeof(receiver_addr_));
 }
 
-};  // namespace udp_video_sender
+}  // namespace udp_streaming_video

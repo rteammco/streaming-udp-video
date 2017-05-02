@@ -4,10 +4,11 @@
 #define SRC_SENDER_SENDER_SOCKET_H_
 
 #include <arpa/inet.h>
+
 #include <string>
 #include <vector>
 
-namespace udp_video_sender {
+namespace udp_streaming_video {
 
 class SenderSocket {
  public:
@@ -27,6 +28,6 @@ class SenderSocket {
     sockaddr_in receiver_addr_;
 };  // SenderSocket
 
-};  // namespace udp_video_sender
+}  // namespace udp_streaming_video
 
 #endif  // SRC_SENDER_SENDER_SOCKET_H_

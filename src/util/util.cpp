@@ -1,14 +1,11 @@
-#ifndef SRC_UTIL_PROCESS_PORT_PARAM_H_
-#define SRC_UTIL_PROCESS_PORT_PARAM_H_
+#include "util/util.h"
 
 #include <iostream>
 #include <sstream>
 
-namespace udp_video {
+namespace udp_streaming_video {
+namespace util {
 
-// Given a set of arguments, processes the first one as the port number. If
-// something goes wrong, -1 will be returned. Otherwise, if a valid port number
-// was provided, that number will be returned as an int.
 int ProcessPortParam(int argc, char **argv) {
   if (argc < 2) {
     std::cerr << "Please specify a port number." << std::endl;
@@ -27,6 +24,5 @@ int ProcessPortParam(int argc, char **argv) {
   return port;
 }
 
-};  // namespace udp_video
-
-#endif  // SRC_UTIL_PROCESS_PORT_PARAM_H_
+}  // namespace util
+}  // namespace udp_streaming_video

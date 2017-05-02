@@ -11,7 +11,7 @@
 #include "opencv2/core/core.hpp"
 #include "opencv2/opencv.hpp"
 
-namespace udp_video_sender {
+namespace udp_streaming_video {
 
 class VideoReader {
  public:
@@ -53,6 +53,6 @@ class VideoReader {
   const bool show_video_;
 };  // VideoReader
 
-};  // namespace udp_video_sender
+}  // namespace udp_streaming_video
 
 #endif  // SRC_SENDER_VIDEO_READER_H_

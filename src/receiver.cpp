@@ -7,13 +7,13 @@
 
 #include "receiver/receiver_socket.h"
 #include "receiver/video_decoder.h"
-#include "util/process_port_param.h"
+#include "util/util.h"
 
-using udp_video_receiver::ReceiverSocket;
-using udp_video_receiver::VideoDecoder;
+using udp_streaming_video::ReceiverSocket;
+using udp_streaming_video::VideoDecoder;
 
 int main(int argc, char **argv) {
-  const int port = udp_video::ProcessPortParam(argc, argv);
+  const int port = udp_streaming_video::util::ProcessPortParam(argc, argv);
   if (port < 0) {
     return -1;
   }

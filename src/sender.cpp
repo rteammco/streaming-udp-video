@@ -9,13 +9,13 @@
 
 #include "sender/sender_socket.h"
 #include "sender/video_reader.h"
-#include "util/process_port_param.h"
+#include "util/util.h"
 
-using udp_video_sender::SenderSocket;
-using udp_video_sender::VideoReader;
+using udp_streaming_video::SenderSocket;
+using udp_streaming_video::VideoReader;
 
 int main(int argc, char **argv) {
-  const int port = udp_video::ProcessPortParam(argc, argv);
+  const int port = udp_streaming_video::util::ProcessPortParam(argc, argv);
   if (port < 0) {
     return -1;
   }
