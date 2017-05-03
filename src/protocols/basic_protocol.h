@@ -13,10 +13,10 @@ namespace udp_streaming_video {
 
 class BasicProtocolData : public ProtocolData {
  public:
-  virtual std::vector<unsigned char> PackageData() const;
+  std::vector<unsigned char> PackageData() const override;
 
-  virtual void UnpackData(
-      const std::vector<unsigned char>& raw_bytes);
+  void UnpackData(
+      const std::vector<unsigned char>& raw_bytes) override;
 
   // Sets the next video frame.
   void SetImage(const VideoFrame& image) {
