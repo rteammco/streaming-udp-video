@@ -15,8 +15,11 @@ class VideoFrame {
   // Default constructor (required) just makes an empty image.
   VideoFrame() {}
 
+  // Initialize the video frame from an existing cv::Mat image.
+  explicit VideoFrame(const cv::Mat& image) : frame_image_(image) {}
+
   // Initialize the video frame (image) from a buffer of raw bytes.
-  VideoFrame(const std::vector<unsigned char> frame_bytes);
+  explicit VideoFrame(const std::vector<unsigned char> frame_bytes);
 
   // Uses the underlying video/image/gui library to display the frame on the
   // user's screen. Only one frame can be displayed at a time, as all frames

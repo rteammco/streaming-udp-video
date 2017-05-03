@@ -18,6 +18,11 @@ class BasicProtocolData : public ProtocolData {
   virtual void UnpackData(
       const std::vector<unsigned char>& raw_bytes);
 
+  // Sets the next video frame.
+  void SetImage(const VideoFrame& image) {
+    video_frame_ = image;
+  }
+
   // Returns the video frame image.
   VideoFrame GetImage() const {
     return video_frame_;

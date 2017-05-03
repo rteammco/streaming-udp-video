@@ -7,12 +7,14 @@
 #include <string>
 #include <vector>
 
+#include "protocols/basic_protocol.h"
 #include "sender/sender_socket.h"
-#include "sender/video_reader.h"
 #include "util/util.h"
+#include "video/video_capture.h"
 
+using udp_streaming_video::BasicProtocolData;
 using udp_streaming_video::SenderSocket;
-using udp_streaming_video::VideoReader;
+using udp_streaming_video::VideoCapture;
 
 int main(int argc, char** argv) {
   const int port = udp_streaming_video::util::ProcessPortParam(argc, argv);
@@ -23,14 +25,15 @@ int main(int argc, char** argv) {
   if (argc > 2) {  // First arg is the port number.
     ip_address = std::string(argv[2]);
   }
-  VideoReader video_reader(false, 25, 0.25);
+
   const SenderSocket socket(ip_address, port);
-  std::cout << "Sending to " << ip_address << " on port " << port << "."
-      << std::endl;
+  std::cout << "Sending to " << ip_address
+            << " on port " << port << "." << std::endl;
+  VideoCapture video_capture(false, 0.25);
+  BasicProtocolData protocol_data;
   while (true) {  // TODO: break out cleanly when done.
-    const std::vector<unsigned char> data = video_reader.GetFrameFromCamera();
-    std::cout << "Sent frame of size " << data.size() << "." << std::endl;
-    socket.SendPacket(data);
+    protocol_data.SetImage(video_capture.GetFrameFromCamera());
+    socket.SendPacket(protocol_data.PackageData());
   }
   return 0;
 }
