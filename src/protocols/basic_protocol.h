@@ -10,18 +10,21 @@
 
 namespace udp_streaming_video {
 
-struct BasicProtocolData : public ProtocolData {
-  std::vector<unsigned char> data;
-};
-
-class BasicProtocol : public Protocol {
+class BasicProtocolData : public ProtocolData {
  public:
-  virtual std::vector<unsigned char> PackageData(
-      const ProtocolData& protocol_data) const;
+  virtual std::vector<unsigned char> PackageData() const;
 
   virtual void UnpackData(
-      const std::vector<unsigned char>& raw_bytes,
-      ProtocolData* protocol_data) const;
+      const std::vector<unsigned char>& raw_bytes);
+
+  // TODO: Implement to return the actual image.
+  std::vector<unsigned char> GetImage() const {
+    return raw_bytes_;
+  }
+
+ private:
+  // TODO: This should be stored as an image.
+  std::vector<unsigned char> raw_bytes_;
 };
 
 }  // namespace udp_streaming_video

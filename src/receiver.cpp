@@ -12,7 +12,6 @@
 
 using udp_streaming_video::ReceiverSocket;
 using udp_streaming_video::VideoDecoder;
-using udp_streaming_video::BasicProtocol;
 using udp_streaming_video::BasicProtocolData;
 
 int main(int argc, char** argv) {
@@ -26,12 +25,11 @@ int main(int argc, char** argv) {
     return -1;
   }
   std::cout << "Listening on port " << port << "." << std::endl;
-  const BasicProtocol protocol;
   BasicProtocolData protocol_data;
   const VideoDecoder decoder;
   while (true) {  // TODO: break out cleanly when done.
-    protocol.UnpackData(socket.GetPacket(), &protocol_data);
-    decoder.ShowFrame(protocol_data.data);
+    protocol_data.UnpackData(socket.GetPacket());
+    decoder.ShowFrame(protocol_data.GetImage());
   }
   return 0;
 }

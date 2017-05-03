@@ -1,6 +1,6 @@
-// A Protocol interprets incoming packet data, which is provided in raw bytes.
-// The data is turned into an appropriate data struct, which is defined by the
-// specific protocol.
+// A ProtocolData object interprets incoming packet data, which is provided in
+// raw bytes. The bytes are turned the appropriate variables, which are stored
+// in the binary packet data according by the specific protocol.
 
 #ifndef SRC_PROTOCOLS_PROTOCOL_H_
 #define SRC_PROTOCOLS_PROTOCOL_H_
@@ -9,22 +9,16 @@
 
 namespace udp_streaming_video {
 
-// A ProtocolData struct should contain the complete unpacked data.
-struct ProtocolData {};
-
-class Protocol {
+class ProtocolData {
  public:
-  // Packs the data into a raw byte buffer which is returned, ready to be sent
-  // as a packet over the network. The same protocol can be used to unpack the
-  // data buffer into meaningful information.
-  virtual std::vector<unsigned char> PackageData(
-      const ProtocolData& protocol_data) const = 0;
+  // Puts all of the relevant variables into a raw byte buffer which is
+  // returned, ready to be sent as a packet over the network.
+  virtual std::vector<unsigned char> PackageData() const = 0;
 
-  // Unpacks a received data buffer into the appropriate protocol data struct,
-  // in accordance to the specific protocol being implemented.
+  // Unpacks a received data buffer into the appropriate variables, in
+  // accordance to the specific protocol being implemented.
   virtual void UnpackData(
-      const std::vector<unsigned char>& raw_bytes,
-      ProtocolData* protocol_data) const = 0;
+      const std::vector<unsigned char>& raw_bytes) = 0;
 };
 
 }  // namespace udp_streaming_video
