@@ -7,12 +7,10 @@
 
 #include "protocols/basic_protocol.h"
 #include "receiver/receiver_socket.h"
-#include "receiver/video_decoder.h"
 #include "util/util.h"
 
-using udp_streaming_video::ReceiverSocket;
-using udp_streaming_video::VideoDecoder;
 using udp_streaming_video::BasicProtocolData;
+using udp_streaming_video::ReceiverSocket;
 
 int main(int argc, char** argv) {
   const int port = udp_streaming_video::util::ProcessPortParam(argc, argv);
@@ -26,10 +24,9 @@ int main(int argc, char** argv) {
   }
   std::cout << "Listening on port " << port << "." << std::endl;
   BasicProtocolData protocol_data;
-  const VideoDecoder decoder;
   while (true) {  // TODO: break out cleanly when done.
     protocol_data.UnpackData(socket.GetPacket());
-    decoder.ShowFrame(protocol_data.GetImage());
+    protocol_data.GetImage().Display();
   }
   return 0;
 }

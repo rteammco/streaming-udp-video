@@ -39,6 +39,7 @@ file(GLOB   protocols_SRC   "src/protocols/*.cpp")
 file(GLOB   receiver_SRC    "src/receiver/*.cpp")
 file(GLOB   sender_SRC      "src/sender/*.cpp")
 file(GLOB   util_SRC        "src/util/*.cpp")
+file(GLOB   video_SRC       "src/video/*.cpp")
 
 # Add the Receiver binary.
 add_executable(
@@ -47,6 +48,7 @@ add_executable(
   ${protocols_SRC}
   ${receiver_SRC}
   ${util_SRC}
+  ${video_SRC}
 )
 target_link_libraries(
   Receiver
@@ -60,6 +62,7 @@ add_executable(
   ${protocols_SRC}
   ${sender_SRC}
   ${util_SRC}
+  ${video_SRC}
 )
 target_link_libraries(
   Sender

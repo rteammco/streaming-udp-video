@@ -7,6 +7,7 @@
 #include <vector>
 
 #include "protocols/protocol.h"
+#include "video/video_frame.h"
 
 namespace udp_streaming_video {
 
@@ -17,14 +18,14 @@ class BasicProtocolData : public ProtocolData {
   virtual void UnpackData(
       const std::vector<unsigned char>& raw_bytes);
 
-  // TODO: Implement to return the actual image.
-  std::vector<unsigned char> GetImage() const {
-    return raw_bytes_;
+  // Returns the video frame image.
+  VideoFrame GetImage() const {
+    return video_frame_;
   }
 
  private:
-  // TODO: This should be stored as an image.
-  std::vector<unsigned char> raw_bytes_;
+  // The video frame received from the packet is stored here.
+  VideoFrame video_frame_;
 };
 
 }  // namespace udp_streaming_video
